@@ -309,7 +309,7 @@ class ePuck():
                     self._refresh_camera_parameters()
 
                 if reply not in acks:
-                    self._debug('Unknown ACK reply from ePcuk: ' + reply)
+                    self._debug('Unknown ACK reply from ePuck: ' + reply)
 
             self._actuators_to_write.remove(m)
         return
@@ -700,7 +700,7 @@ class ePuck():
                     self._sensors_to_read = tuple(l)
                     self._debug('Sensor "' + sensor + '" disabled')
                 else:
-                    self._debug('Sensor "' + sensor + '" alrady disabled')
+                    self._debug('Sensor "' + sensor + '" already disabled')
 
             except Exception, e:
                 self._debug('Something wrong happened to disable the sensors: ', e)
@@ -870,8 +870,16 @@ class ePuck():
 
         :param sound: Sound in the range [1,5]. Other for stop
         :type sound: int
-        """
 
+        The robot is capable of playing 5 sounds, their numbers are:
+
+            1. "haa"
+            2. "spaah"
+            3. "ouah"
+            4. "yaouh"
+            5. "wouaaaaaaaah"
+
+        """
         self._actuators_to_write.append(("T", sound))
         return True
 
