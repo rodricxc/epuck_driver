@@ -305,10 +305,14 @@ class ePuck():
                 # Others actuators, parameters are separated by commas
                 msg = ",".join(["%s" % i for i in m])
                 reply = self.send_and_receive(msg)
+                
+                print msg
+                print reply
+
                 if reply == 'j':
                     self._refresh_camera_parameters()
 
-                if reply not in acks:
+                if reply != None and reply not in acks:
                     self._debug('Unknown ACK reply from ePuck: ' + reply)
 
             self._actuators_to_write.remove(m)
