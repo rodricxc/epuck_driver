@@ -36,7 +36,7 @@ Some useful bluetooth commands
 
 To find the nearby bluetooth devices and get their MAC address:
 
-	$ hcitool scan
+    $ hcitool scan
 
 To automatically set the bluetooth password when you start the epuck_controller.launch (the XXXX is the password, eg. 1515)
 
@@ -48,4 +48,4 @@ You can also edit or create a file in /var/lib/bluetooth/XX:XX:XX:XX:XX:XX/pinco
 
 And restart the bluetooth service:
 
-	$ sudo service bluetooth restart
+	$ sudo service bluetooth restart 
