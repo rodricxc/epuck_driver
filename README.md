@@ -36,17 +36,17 @@ Some useful bluetooth commands
 
 To find the nearby bluetooth devices and get their MAC address:
 
-	$ hcitool scan
+    $ hcitool scan
 
 To automatically set the bluetooth password when you start the epuck_controller.launch (the XXXX is the password, eg. 1515)
 
     $ bluetooth-agent XXX &
 
-You can also edith or create a file in /var/lib/bluetooth/XX:XX:XX:XX:XX:XX/pincodes and add:
+You can also edit or create a file in /var/lib/bluetooth/XX:XX:XX:XX:XX:XX/pincodes (XX:XX:XX:XX:XX:XX is your bluetooth MAC address) and add:
 
-	$ <MAC address> <PIN>
+    <MAC address epuck> <PASSWORD>
 
 And restart the bluetooth service:
 	
-	# service bluetooth restart
-
+    $ sudo service bluetooth restart
+    
