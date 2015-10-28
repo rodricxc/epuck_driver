@@ -42,3 +42,10 @@ To automatically set the bluetooth password when you start the epuck_controller.
 
     $ bluetooth-agent XXX &
 
+You can also edit or create a file in /var/lib/bluetooth/XX:XX:XX:XX:XX:XX/pincodes (XX:XX:XX:XX:XX:XX is your bluetooth MAC address) and add:
+
+	<MAC address epuck> <PASSWORD>
+
+And restart the bluetooth service:
+
+	$ sudo service bluetooth restart
