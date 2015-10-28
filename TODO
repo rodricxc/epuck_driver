@@ -16,9 +16,9 @@ Services:
  ☐ Front Light Service
 
 next release:
- ☐ Sensor: Selector
- ☐ Sensor: Floor
- ☐ Sensor: microfone
+ ✔ Sensor: Selector @done (15-10-27 22:58)
+ ✔ Sensor: Floor @done (15-10-27 22:58)
+ ✔ Sensor: microfone @done (15-10-27 22:58)
  ☐ Set sound
 
 Archive:

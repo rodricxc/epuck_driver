@@ -40,5 +40,5 @@ To find the nearby bluetooth devices and get their MAC address:
 
 To automatically set the bluetooth password when you start the epuck_controller.launch (the XXXX is the password, eg. 1515)
 
-    $ bluetooth-agent XXX
+    $ bluetooth-agent XXX &
 
