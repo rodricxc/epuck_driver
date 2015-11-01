@@ -12,6 +12,7 @@ odomMsg = 'Null'
 goalMsg = 'Null'
 
 threshold = 0.025
+M_PI_8 = 0.392699082
 
 def OdomCallback(odom):
 	global odomMsg
@@ -27,20 +28,16 @@ def run():
 	rospy.init_node('epuck_move_base', anonymous=True)
 
 	pub = rospy.Publisher('/mobile_base/cmd_vel', Twist, queue_size=10)
+	#pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
 
 	rospy.Subscriber("/odom", Odometry, OdomCallback)
+
 	rospy.Subscriber("/move_base_simple/goal", PoseStamped, GoalCallback)
 
 	rate = rospy.Rate(10) # 10hz
 
 	global odomMsg
 	global goalMsg
-
-	
-	while odomMsg == 'Null':
-		rate.sleep()
-		continue
-	print "Checked for Odometry"
 
 	cmd_vel = Twist()
 
@@ -51,7 +48,7 @@ def run():
 
 		dx = goalMsg.pose.position.x - odomMsg.pose.pose.position.x
 		dy = goalMsg.pose.position.y - odomMsg.pose.pose.position.y
-		print str(abs(dx)) + " " + str(abs(dy))
+
 		if abs(dx) <= threshold and abs(dy) <= threshold:
 			cmd_vel.linear.x = 0.0
 			cmd_vel.angular.z = 0.0
@@ -64,8 +61,14 @@ def run():
 			 odomMsg.pose.pose.orientation.z, odomMsg.pose.pose.orientation.w)
 		euler = tf.transformations.euler_from_quaternion(w)
 		yaw = euler[2]
-		cmd_vel.angular.z = (theta - yaw)*0.2
-		cmd_vel.linear.x = 1.0
+		ang = (theta - yaw)
+
+		if ang > math.pi:
+			ang -= 2*math.pi
+
+		cmd_vel.angular.z = ang
+		cmd_vel.linear.x = 0.2
+		#cmd_vel.linear.x = 0.5 * (1 - abs(ang)/2*math.pi)
 		pub.publish(cmd_vel)
 		rate.sleep()
 
