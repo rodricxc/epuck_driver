@@ -1,0 +1,42 @@
+# set the resolution of the underlying raytrace model in meters
+resolution 0.01
+
+interval_sim 100
+interval_real 100
+gui_interval 20
+gui_disable 0
+
+include "epuck.inc"
+include "map.inc"
+
+lightpos [2 0] 
+
+# size of the world in meters
+size [12 10]
+
+# configure the GUI window
+window
+( 
+  size [ 660.000 585.000 ]
+  center [0.0 0.0] 
+  scale 110.00   # pixels per meter
+  show_blocks 1
+)
+
+# load an environment bitmap
+floorplan
+( 
+  bitmap "simple.png"
+  # size 30m x 25m
+  size [6.0 5.0 0.800]
+
+  gui_grid 1
+   name "simple"
+)
+
+epuck
+(
+  color "blue"
+  pose [0 0 0 0]
+  name "epuck" 
+)
