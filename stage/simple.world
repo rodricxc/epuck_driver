@@ -17,7 +17,7 @@ size [12 10]
 # configure the GUI window
 window
 ( 
-  size [ 660.000 585.000 ]
+  size [ 660.000 584.000 ]
   center [0.0 0.0] 
   scale 110.00   # pixels per meter
   show_blocks 1
