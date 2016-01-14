@@ -67,8 +67,8 @@ def run():
 			ang -= 2*math.pi
 
 		cmd_vel.angular.z = ang
-		cmd_vel.linear.x = 0.2
-		#cmd_vel.linear.x = 0.5 * (1 - abs(ang)/2*math.pi)
+		cmd_vel.linear.x = 1.0
+		cmd_vel.linear.x = 0.5 * (1 - abs(ang)/2*math.pi)
 		pub.publish(cmd_vel)
 		rate.sleep()
 

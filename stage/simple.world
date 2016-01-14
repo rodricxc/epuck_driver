@@ -17,9 +17,9 @@ size [12 10]
 # configure the GUI window
 window
 ( 
-  size [ 660.000 584.000 ]
-  center [0.0 0.0] 
-  scale 110.00   # pixels per meter
+  size [ 660 584 ]
+  center [0.000 0.000] 
+  scale 110.000   # pixels per meter
   show_blocks 1
 )
 
@@ -28,7 +28,7 @@ floorplan
 ( 
   bitmap "simple.png"
   # size 30m x 25m
-  size [6.0 5.0 0.800]
+  size [6.000 5.000 0.800]
 
   gui_grid 1
    name "simple"
@@ -37,6 +37,6 @@ floorplan
 epuck
 (
   color "blue"
-  pose [0 0 0 0]
+  pose [0.000 0.000 0.000 0.000]
   name "epuck" 
 )

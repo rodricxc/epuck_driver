@@ -24,3 +24,7 @@ next release:
 Archive:
  ✔ kinematic model for differential speed controller @done @project(Priority)
  ✔ Sensor: Camera Image @done @project(Priority)
+
+Updating the firmware:
+  ☐ Download from epuck site epucklib
+  ☐ http://sjriek.nl/projects/e-puck/programming/
