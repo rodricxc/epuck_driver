@@ -12,6 +12,9 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
   std_msgs
+  nav_msgs
+  ar_track_alvar_msgs
+  visualization_msgs
   tf
 )
 

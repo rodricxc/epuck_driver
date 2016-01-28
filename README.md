@@ -13,6 +13,8 @@ Libraries
 * Python Bluetooth or Pybluez
 * Python Image Library (PIL)
 
+	$ sudo apt-get install libbluetooth-dev python-setuptools python-imaging python-bluez
+
 E-puck robots must run the [webots](www.cyberbotics.com) firmware (resources/firmware/webots-firmware-1.4.4.hex).
 
 
