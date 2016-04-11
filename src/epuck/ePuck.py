@@ -435,15 +435,27 @@ class ePuck():
         if self.conexion_status:
             self._debug('Already connected')
             return False
-        try:
-            self.socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-            self.socket.connect((self.address, 1))
-            self.socket.settimeout(0.5)
 
-        except Exception, e:
-            txt = 'Connection problem: \n' + str(e)
-            self._debug(txt)
-            raise Exception, txt
+        attempt = 1
+
+        while attempt < 5:
+            try:
+                self.socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+                print "Connecting to ", self.address
+                self.socket.connect((self.address, 1))
+                self.socket.settimeout(0.5)
+                break
+
+            except Exception, e:
+                txt = 'Connection problem: \n' + str(e)
+                self._debug(txt)
+                failed = True
+                time.sleep(3)
+                attempt += 1
+                if attempt == 5:
+                    raise Exception, txt
+
+        print 'Connected ', self.address
 
         self.conexion_status = True
         self._debug("Connected")

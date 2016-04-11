@@ -73,11 +73,14 @@ class EPuckDriver(object):
         """
         Hello by robot.
         """
+        # Set initial velocity to zero
+        self._bridge.set_motors_speed(0, 0)
+
         self._bridge.set_body_led(1)
         self._bridge.set_front_led(1)
 
-        self._bridge.set_sound(2)
-        self._bridge.step()
+        #self._bridge.set_sound(2)
+        #self._bridge.step()
 
         rospy.sleep(1.0)
         self._bridge.set_body_led(0)
@@ -127,10 +130,12 @@ class EPuckDriver(object):
         self._bridge.step()
 
         # Subscribe to Commando Velocity Topic
-        rospy.Subscriber("mobile_base/cmd_vel", Twist, self.handler_velocity)
+        
+        rospy.Subscriber('/'+self._name + '/cmd_vel', Twist, self.handler_velocity)
+        #rospy.Subscriber("/cmd_vel", Twist, self.handler_velocity)
 
         # Subscribe to robot speaker
-        rospy.Subscriber("/epuck/speaker", Int16, self.speaker_callback)
+        #rospy.Subscriber("/epuck/speaker", Int16, self.speaker_callback)
 
         # Sensor Publishers
         # rospy.Publisher("/%s/mobile_base/" % self._name, )
@@ -422,9 +427,9 @@ class EPuckDriver(object):
         Reproduce a sound
         :param data: Sound in the range [1,5]. Other for stop
         """
-        print data
+        #print data
         sound = data
-        print sound
+        #print sound
         self._bridge.set_sound(0)
 
 
