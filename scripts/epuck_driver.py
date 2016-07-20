@@ -141,11 +141,11 @@ class EPuckDriver(object):
         # rospy.Publisher("/%s/mobile_base/" % self._name, )
 
         if self.enabled_sensors['camera']:
-            self.image_publisher = rospy.Publisher("camera", Image)
+            self.image_publisher = rospy.Publisher("camera", Image, queue_size=1)
 
         if self.enabled_sensors['proximity']:
             for i in range(0,8):
-                self.prox_publisher.append(rospy.Publisher("proximity"+str(i), Range))
+                self.prox_publisher.append(rospy.Publisher("proximity"+str(i), Range, queue_size=1))
                 self.prox_msg.append(Range())
                 self.prox_msg[i].radiation_type = Range.INFRARED
                 self.prox_msg[i].header.frame_id =  self._name+"/base_prox" + str(i)
@@ -154,25 +154,25 @@ class EPuckDriver(object):
                 self.prox_msg[i].max_range = 0.05		# 5 cm
 
         if self.enabled_sensors['motor_position']:
-            self.odom_publisher = rospy.Publisher('odom', Odometry)
+            self.odom_publisher = rospy.Publisher('odom', Odometry, queue_size=1)
 
         if self.enabled_sensors['accelerometer']:
-            self.accel_publisher = rospy.Publisher('accel', Imu)    # Only "linear_acceleration" vector filled.
+            self.accel_publisher = rospy.Publisher('accel', Imu, queue_size=1)    # Only "linear_acceleration" vector filled.
 
         if self.enabled_sensors['selector']:
-            self.selector_publisher = rospy.Publisher('selector', Marker)
+            self.selector_publisher = rospy.Publisher('selector', Marker, queue_size=1)
 
         if self.enabled_sensors['light']:
-            self.light_publisher = rospy.Publisher('light', Marker)
+            self.light_publisher = rospy.Publisher('light', Marker, queue_size=1)
 
         if self.enabled_sensors['motor_speed']:
-            self.motor_speed_publisher = rospy.Publisher('motor_speed', Marker)
+            self.motor_speed_publisher = rospy.Publisher('motor_speed', Marker, queue_size=1)
 
         if self.enabled_sensors['microphone']:
-            self.microphone_publisher = rospy.Publisher('microphone', Marker)
+            self.microphone_publisher = rospy.Publisher('microphone', Marker, queue_size=1)
 
         if self.enabled_sensors['floor']:
-            self.floor_publisher = rospy.Publisher('floor', Marker)
+            self.floor_publisher = rospy.Publisher('floor', Marker, queue_size=1)
 
         # Spin almost forever
         #rate = rospy.Rate(7)   # 7 Hz. If you experience "timeout" problems with multiple robots try to reduce this value.
